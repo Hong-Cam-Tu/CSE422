@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Member's Borrowed Books Report";
+}
+<h2>Borrowed Books by Member</h2>
+<form method="post" action="/Report/MemberBorrowedBooksReport">
+    <label for="memberId">Select Member:</label>
+    <select name="memberId" class="form-control">
+        @foreach (var member in ViewBag.Members)
+        {
+            <option value="@member.Value">@member.Text</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">Generate Report</button>
+</form>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Borrowed Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model)
+            {
+                <tr>
+                    <td>@transaction.Book.Title</td>
+                    <td>@transaction.TransactionDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

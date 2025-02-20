@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "All Borrowed Books Report";
+}
+<h2>All Borrowed Books</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Member</th>
+            <th>Book</th>
+            <th>Borrowed Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td>@transaction.Member.Name</td>
+                <td>@transaction.Book.Title</td>
+                <td>@transaction.TransactionDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
