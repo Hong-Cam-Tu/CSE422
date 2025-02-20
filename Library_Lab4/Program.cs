@@ -1,3 +1,10 @@
+using Library_Lab4.Data;
+using Library_Lab4.Services;
+
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 namespace Library_Lab4
 {
     public class Program
@@ -8,6 +15,11 @@ namespace Library_Lab4
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<LibraryContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
+            });
+            builder.Services.AddScoped<IBookService, BookService>();
 
             var app = builder.Build();
 

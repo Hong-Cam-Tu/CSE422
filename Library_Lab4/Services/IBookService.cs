@@ -2,7 +2,7 @@
 
 namespace Library_Lab4.Services
 {
-    public class IBookService
+    public interface IBookService
     {
         IEnumerable<Book> GetAllBooks();
         Book GetBookById(int id);

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Book>
+
+<h2>Library Books</h2>
+<form method="get" action="/Books/Search">
+    <input type="text" name="keyword" placeholder="Search for books..." class="form-control" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<a href="/Books/Create" class="btn btn-primary">Add Book</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Category</td>
+                <td>@book.Quantity</td>
+                <td>
+                    <a href="/Books/Edit/@book.BookID" class="btn btn-warning">Edit</a>
+                    <a href="/Books/Delete/@book.BookID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
