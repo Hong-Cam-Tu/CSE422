@@ -9,5 +9,6 @@ namespace Library_Lab4.Services
         void AddBook(Book book);
         void UpdateBook(Book book);
         void DeleteBook(int id);
+        IEnumerable<Book> SearchBooks(string keyword);
     }
 }

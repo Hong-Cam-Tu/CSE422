@@ -9,5 +9,7 @@ namespace Library_Lab4.Services
         void AddMember(Member member);
         void UpdateMember(Member member);
         void DeleteMember(int id);
+        IEnumerable<Member> SearchMembers(string keyword);
+
     }
 }
